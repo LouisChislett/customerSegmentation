@@ -4,13 +4,13 @@
 
 This repo is designed as a way of practicing unsupervised learning (clustering) with the goal of segmenting and profiling customers for a retail platform. In it you can find:
 
-* A jupyter notebook containing the pipeline, from data cleaning and exploration through to unsupervised K-means clustering and customer profiling. The final output of this pipeline, alongside informative plots based on the formed clusters, is a dataset which feeds into...
+* A [Jupyter Notebook](customerProfiling.ipynb) containing the pipeline, from data cleaning and exploration through to unsupervised K-means clustering and customer profiling. The final output of this pipeline, alongside informative plots based on the formed clusters, is a dataset which feeds into...
 * A streamlit app with a reactive UI designed for non-technical stakeholders to explore the impact of the results. It allows a stakeholder to input a hypothetical customer's details and understand what type of customer they are likely to be (e.g. high spending, buys luxury etc...), as well as outputing a recommended marketing plan for that segment.
 
 
 ## Dataset Description 📅
 
-The customer personality analysis dataset (https://www.kaggle.com/datasets/imakash3011/customer-personality-analysis?resource=download) is a synthetic marketing dataset. It is well-suited for unsupervised learning tasks such as clustering and RFM analysis. The dataset is specifically desgined to mimic that which you might find in a retail company which sells consumer goods (food, jewellery, household items).
+The [customer personality analysis dataset](https://www.kaggle.com/datasets/imakash3011/customer-personality-analysis?resource=download) is a synthetic marketing dataset. It is well-suited for unsupervised learning tasks such as clustering and RFM analysis. The dataset is specifically desgined to mimic that which you might find in a retail company which sells consumer goods (food, jewellery, household items).
 
 ### Feature Description
 
