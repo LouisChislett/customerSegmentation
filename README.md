@@ -5,7 +5,7 @@
 This repo is designed as a way of practicing unsupervised learning (clustering) with the goal of segmenting and profiling customers for a retail platform. In it you can find:
 
 * A [Jupyter Notebook](customerProfiling.ipynb) containing the pipeline, from data cleaning and exploration through to unsupervised K-means clustering and customer profiling. The final output of this pipeline, alongside informative plots based on the formed clusters, is a dataset which feeds into...
-* (COMING SOON!) A streamlit app with a reactive UI designed for non-technical stakeholders to explore the impact of the results. It allows a stakeholder to input a hypothetical customer's details and understand what type of customer they are likely to be (e.g. high spending, buys luxury etc...), as well as outputing a recommended marketing plan for that segment.
+* A [Streamlit App](https://customersegmentationandprofiling.streamlit.app/) with a reactive UI designed for non-technical stakeholders to explore the impact of the results. It allows a stakeholder to input a hypothetical customer's details and understand what type of customer they are likely to be (e.g. high spending, buys luxury etc...), as well as outputing a recommended marketing plan for that segment. I use K-nearest neighbours to predict what cluster an inputted customer would be in, and recommend a marketing strategy based on this.
 
 
 ## Dataset Description
