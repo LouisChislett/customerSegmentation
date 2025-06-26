@@ -8,13 +8,13 @@ This repo is designed as a way of practicing unsupervised learning (clustering) 
 * (COMING SOON!) A streamlit app with a reactive UI designed for non-technical stakeholders to explore the impact of the results. It allows a stakeholder to input a hypothetical customer's details and understand what type of customer they are likely to be (e.g. high spending, buys luxury etc...), as well as outputing a recommended marketing plan for that segment.
 
 
-## Dataset Description 📅
+## Dataset Description
 
 The [customer personality analysis dataset](https://www.kaggle.com/datasets/imakash3011/customer-personality-analysis) is a synthetic marketing dataset. It is well-suited for unsupervised learning tasks such as clustering and RFM analysis. The dataset is specifically desgined to mimic that which you might find in a retail company which sells consumer goods (food, jewellery, household items).
 
 ### Feature Description
 
-#### 👤 People Attributes
+#### People Attributes
 
 | Column Name      | Description                                                  |
 |------------------|--------------------------------------------------------------|
@@ -29,7 +29,7 @@ The [customer personality analysis dataset](https://www.kaggle.com/datasets/imak
 | `Recency`        | Number of days since customer's last purchase                |
 | `Complain`       | 1 if the customer complained in the last 2 years, 0 otherwise|
 
-#### 🍷 Product Spending
+#### Product Spending
 
 | Column Name         | Description                                  |
 |---------------------|----------------------------------------------|
@@ -40,7 +40,7 @@ The [customer personality analysis dataset](https://www.kaggle.com/datasets/imak
 | `MntSweetProducts`  | Amount spent on sweets in last 2 years       |
 | `MntGoldProds`      | Amount spent on gold in last 2 years         |
 
-#### 🎯 Promotion & Campaign Response
+#### Promotion & Campaign Response
 
 | Column Name      | Description                                               |
 |------------------|-----------------------------------------------------------|
@@ -52,7 +52,7 @@ The [customer personality analysis dataset](https://www.kaggle.com/datasets/imak
 | `AcceptedCmp5`   | 1 if customer accepted the offer in the 5th campaign      |
 | `Response`       | 1 if customer accepted the offer in the last campaign     |
 
-#### 🌍 Purchase Channels
+#### Purchase Channels
 
 | Column Name           | Description                                                      |
 |-----------------------|------------------------------------------------------------------|

@@ -60,16 +60,7 @@ def generate_figures(data):
     ax.set_ylabel("Total Spend (€)")
     figs["Income vs Spending"] = fig
 
-    # 3) Spending Distribution by Cluster
-    fig, ax = plt.subplots(figsize=(6, 4))
-    sns.swarmplot(x=data["Cluster"], y=data["Money_Spent"], color="#CBEDDD", alpha=0.6, ax=ax)
-    sns.boxenplot(x=data["Cluster"], y=data["Money_Spent"], palette=palette, ax=ax)
-    ax.set_title("Spending Distribution by Cluster")
-    ax.set_xlabel("Cluster Label")
-    ax.set_ylabel("Total Spend (€)")
-    figs["Spending by Cluster"] = fig
-
-    # 4) Promotions Accepted
+    # 3) Promotions Accepted
     df_promo = data.copy()
     df_promo["Total_Promos"] = df_promo[["AcceptedCmp1","AcceptedCmp2","AcceptedCmp3","AcceptedCmp4","AcceptedCmp5"]].sum(axis=1)
     prop_df = df_promo.groupby(["Cluster","Total_Promos"]).size().reset_index(name="Count")
@@ -81,7 +72,7 @@ def generate_figures(data):
     ax.set_ylabel("Proportion of Cluster")
     figs["Campaigns Accepted"] = fig
 
-    # 5) Deals Purchased
+    # 4) Deals Purchased
     fig, ax = plt.subplots(figsize=(6, 4))
     sns.boxenplot(x=data["Cluster"], y=data["NumDealsPurchases"], palette=palette, ax=ax)
     ax.set_title("Deals Purchased by Cluster")
@@ -159,16 +150,15 @@ st.markdown(
 tab1, tab2, tab3 = st.tabs(["Clustering Overview","Customer Profiling","Marketing Strategy"])
 
 # 1) Clustering Overview
-a = ["Cluster Distribution","Income vs Spending","Spending by Cluster","Campaigns Accepted","Deals Purchased"]
+a = ["Cluster Distribution","Income vs Spending","Campaigns Accepted","Deals Purchased"]
 with tab1:
     st.subheader("Clustering Overview")
     overview_tabs = st.tabs(a)
     descriptions = {
-        "Cluster Distribution": "Shows the size of each customer segment, helping you see which clusters are most prevalent.",
-        "Income vs Spending": "Scatterplot of income vs total spend, color-coded by cluster to reveal spending patterns relative to earnings.",
-        "Spending by Cluster": "Distribution of total spend within each cluster: swarm shows individuals, boxen shows distribution percentiles.",
-        "Campaigns Accepted": "Proportion of customers in each cluster accepting various numbers of promotions; identifies promo receptiveness.",
-        "Deals Purchased": "Distribution of deals purchased by cluster, highlighting deal sensitivity across segments."
+        "Cluster Distribution": "Shows the size of each customer segment, helping you see which clusters are most prevalent. \n Clusters 0 and 2 are larger than cluster 1",
+        "Income vs Spending": "Scatterplot of income vs total spend, color-coded by cluster to reveal spending patterns relative to earnings. \n Here we can see that cluster 1 are those we really wish to target, with higher income and spending than the other two clusters.",
+        "Campaigns Accepted": "Proportion of customers in each cluster accepting various numbers of promotions; identifies promo receptiveness. \n Here we can see that cluster 1 seems to accept more promotions than the other clusters.",
+        "Deals Purchased": "Distribution of deals purchased by cluster, highlighting deal sensitivity across segments. \n Despite accepting more promotions, cluster 1 does not purchase as many deals as the other two clusters."
     }
     for tab, key in zip(overview_tabs, a):
         with tab:
@@ -181,12 +171,12 @@ with tab2:
     st.subheader("Customer Profiling")
     profiling_tabs = st.tabs(b)
     descriptions = {
-        "Days by Cluster": "Tenure distribution (days since first purchase) by cluster, showing longevity patterns.",
-        "Age by Cluster": "Age distribution within each cluster, revealing demographic age profiles.",
-        "Family_Size by Cluster": "Household size distribution, indicating whether clusters are singles or larger families.",
+        "Days by Cluster": "Tenure distribution (days since first purchase) by cluster, showing how long each cluster has been customers for on average. \n Here we can see that there is not a great difference between clusters.",
+        "Age by Cluster": "Age distribution within each cluster, revealing demographic age profiles. \n Here we can see that clusters 0 and 1 are slightly older on average than cluster 2.",
+        "Family_Size by Cluster": "Household size distribution, indicating whether clusters are singles or larger families. \n Here we can see that cluster 1 typically does not have children, while clusters 0 and 2 do. Cluster 0 represents older parents, while cluster 2 are those with younger families.",
         "Kidhome by Cluster": "Proportion of customers with kids per cluster, highlighting family stages.",
         "Teenhome by Cluster": "Proportion of customers with teenagers per cluster, showing older child demographics.",
-        "Education by Cluster": "Breakdown of education levels by cluster, indicating academic attainment of segments."
+        "Education by Cluster": "Breakdown of education levels by cluster, indicating academic attainment of segments. \n Clusters 0 and 1 are slightly more likely to have completed higher education, such as a degree, masters or PhD than cluster 2."
     }
     for tab, key in zip(profiling_tabs, b):
         with tab:
@@ -208,12 +198,10 @@ with tab3:
 
         # Tailored marketing recommendations
         strategies = {
-            0: "High-value spenders: Recommend premium loyalty programs, exclusive product previews, and personalized high-end offers.",
-            1: "Occasional buyers: Send reminder emails with limited-time coupons to encourage more frequent visits.",
-            2: "Family-focused segment: Promote bundle deals on daily essentials and family-oriented promotions.",
-            3: "Younger professionals: Highlight convenience services, quick delivery, and targeted digital ads.",
-            4: "Value-seekers: Emphasize discounts, flash sales, and deal-of-the-day notifications."
-        }
+            0: "High-value spenders: Make deals for high value products such as jewellery and wine",
+            1: "High-income and High-value spenders, but do not buy luxury items: Focus on promotions for medium-priced products, loyalty rewards, and exclusive events.",
+            2: "Younger parents with kids: Target with family-oriented promotions, kids' products, and educational content.",
+            }
         text = strategies.get(pred, "General strategy: Use a mix of promotional offers and personalized outreach.")
         st.markdown(f"**Recommended Marketing Strategy:** {text}")
     else:
@@ -221,4 +209,4 @@ with tab3:
 
 # Footer spacing
 st.markdown("---")
-st.caption("App built with Streamlit | Data Science Team")
+st.caption("App built with Streamlit | Louis Chislett")
